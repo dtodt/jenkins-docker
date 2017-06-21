@@ -10,4 +10,8 @@ RUN mkdir -p /tmp/download && \
  addgroup jenkins docker && \
  addgroup root docker
 
+RUN apk update && \
+ apk add --no-cache nodejs=8.1.2 && \
+ apk add --no-cache nodejs-npm=8.1.2
+
 user jenkins
