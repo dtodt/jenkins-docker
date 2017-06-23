@@ -1,4 +1,4 @@
-FROM jenkins:alpine
+FROM jenkins
 USER root
 
 RUN mkdir -p /tmp/download && \
@@ -10,7 +10,8 @@ RUN mkdir -p /tmp/download && \
  addgroup jenkins docker && \
  addgroup root docker
 
-RUN apk update && \
- apk add --no-cache nodejs
+RUN apt-get update && \
+ apt-get install -y nodejs npm nodejs-legacy && \
+ apt-get clean -y
 
 user jenkins
