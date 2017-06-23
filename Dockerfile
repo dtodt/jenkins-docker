@@ -1,4 +1,4 @@
-FROM jenkins
+FROM jenkins:latest
 USER root
 
 RUN mkdir -p /tmp/download && \
@@ -6,11 +6,11 @@ RUN mkdir -p /tmp/download && \
  rm -rf /tmp/download/docker/dockerd && \
  mv /tmp/download/docker/docker* /usr/local/bin/ && \
  rm -rf /tmp/download && \
- addgroup docker && \
- addgroup jenkins docker && \
- addgroup root docker
+ groupadd -g 999 docker && \
+ usermod -aG docker jenkins
 
-RUN apt-get install -y nodejs npm nodejs-legacy && \
+RUN apt-get update && \
+ apt-get install -y nodejs npm nodejs-legacy && \
  apt-get clean -y
 
-user jenkins
+USER jenkins
