@@ -10,8 +10,7 @@ RUN mkdir -p /tmp/download && \
  addgroup jenkins docker && \
  addgroup root docker
 
-RUN apt-get update && \
- apt-get install -y nodejs npm nodejs-legacy && \
+RUN apt-get install -y nodejs npm nodejs-legacy && \
  apt-get clean -y
 
 user jenkins
